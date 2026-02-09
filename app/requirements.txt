@@ -5,4 +5,4 @@ sentence-transformers
 faiss-cpu
 python-multipart
 numpy
-pydantic
+torch
