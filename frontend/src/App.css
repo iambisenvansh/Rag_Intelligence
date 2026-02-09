@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0f0f0f;
+  color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+  display: flex;
+  justify-content: center; 
+}
+
+.app {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;                 /* center horizontally */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+
+/* Header */
+.header {
+  padding: 16px 24px;
+  font-size: 22px;
+  font-weight: 600;
+  border-bottom: 1px solid #222;
+}
+
+/* Center chat like ChatGPT */
+.chat-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  /* align-items: center;
+  padding: 20px; */
+  width: 100%;
+}
+
+/* Chat panel */
+.chat-container {
+  width: 100%;
+  max-width: 850px;
+  height: 100%;
+  max-height: 85vh;
+  background: #111;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Upload */
+.upload {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-bottom: 1px solid #222;
+}
+
+.upload button {
+  background: #10a37f;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+}
+
+/* Chat messages */
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* Bubbles */
+.bubble {
+  max-width: 75%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.bubble.user {
+  background: #10a37f;
+  color: black;
+  align-self: flex-end;
+}
+
+.bubble.assistant {
+  background: #1e1e1e;
+  align-self: flex-start;
+}
+
+.typing {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Citations */
+.citations {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Input */
+.input {
+  display: flex;
+  padding: 14px;
+  border-top: 1px solid #222;
+  gap: 10px;
+}
+
+.input input {
+  flex: 1;
+  padding: 12px;
+  background: #1c1c1c;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.input input:focus {
+  outline: none;
+}
+
+.input button {
+  background: #10a37f;
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.welcome {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 500;
+  color: #e5e5e5;
+  text-align: center;
+  opacity: 0.9;
+}

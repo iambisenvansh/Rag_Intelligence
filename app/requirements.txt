@@ -1,7 +1,8 @@
 fastapi
 uvicorn
-pypdf
-langchain
+pdfplumber
 sentence-transformers
 faiss-cpu
-python-dotenv
+python-multipart
+numpy
+pydantic
