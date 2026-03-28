@@ -1,54 +1,44 @@
+📄 RAG Document Intelligence System
 
- 📄 RAG Document Intelligence System
+An end-to-end Retrieval-Augmented Generation (RAG) system that enables users to upload PDF documents and ask contextual, citation-backed questions.
 
-An end-to-end Retrieval-Augmented Generation (RAG) system that allows users to upload PDF documents and ask contextual questions with source-based, citation-aware answers — similar to ChatGPT, but grounded strictly in uploaded documents.
+Unlike generic AI chat systems, this solution ensures grounded, hallucination-free responses strictly based on the uploaded documents.
 
-This project demonstrates real-world GenAI engineering, focusing on reliability, retrieval accuracy, and production-ready architecture.
+💡 Designed to demonstrate real-world GenAI engineering with a focus on accuracy, reliability, and production-ready architecture
 
-🚀 Features
-
-📤 Upload PDF documents
-
-📄 Extract text from PDFs
-
-✂️ Intelligent text chunking
-
-🧠 Semantic embeddings using Sentence Transformers
-
-⚡ Fast similarity search using FAISS
-
-🔎 Citation-aware retrieval (page + source tracking)
-
-💬 ChatGPT-style conversational UI
-
-❌ Hallucination-safe responses (answers only from documents)
-
+🚀 Key Features
+📤 Upload and process PDF documents
+📄 Accurate text extraction using pdfplumber
+✂️ Intelligent text chunking for better retrieval
+🧠 Semantic embeddings via Sentence Transformers
+⚡ Fast vector similarity search with FAISS
+🔎 Citation-aware answers (page + source tracking)
+💬 ChatGPT-like conversational interface
+🛡️ Hallucination-safe responses (strictly document-based)
 🌐 Full-stack implementation (FastAPI + React)
 
+
 🧠 Tech Stack
-Backend
+
+🔧 Backend
 
 FastAPI – High-performance API framework
-
 pdfplumber – PDF text extraction
-
 Sentence Transformers – Semantic embeddings
-
 FAISS – Vector similarity search
-
 Pydantic – Data validation
-
 Python
 
-Frontend
+🎨 Frontend
 
-React (Vite)
+React (Vite) – Fast modern UI
+Custom Chat Interface
+Fetch API – API communication
 
-Modern Chat UI
 
-Fetch API
 
 🏗️ System Architecture
+
 PDF Upload
    ↓
 Text Extraction (pdfplumber)
@@ -61,155 +51,130 @@ FAISS Vector Store
    ↓
 Semantic Retrieval
    ↓
-Answer Generation (Context-Grounded)
+Context-Grounded Answer Generation
    ↓
 Response + Citations
 
 📂 Project Structure
+
 rag-doc-intelligence/
 │
 ├── app/
 │   ├── api/
-│   │   ├── ingest.py
-│   │   ├── query.py
-│   │   └── health.py
+│   │   ├── ingest.py        # PDF upload endpoint
+│   │   ├── query.py         # Query handling
+│   │   └── health.py        # Health check
 │   │
 │   ├── ingestion/
-│   │   ├── loader.py
-│   │   ├── chunker.py
-│   │   └── embedder.py
+│   │   ├── loader.py        # PDF loader
+│   │   ├── chunker.py       # Text chunking
+│   │   └── embedder.py      # Embeddings
 │   │
 │   ├── retrieval/
-│   │   ├── vector_store.py
-│   │   └── retriever.py
+│   │   ├── vector_store.py  # FAISS index
+│   │   └── retriever.py     # Retrieval logic
 │   │
 │   ├── models/
 │   │   ├── request.py
 │   │   └── response.py
 │   │
-│   └── main.py
+│   └── main.py              # Entry point
 │
-├── frontend/
-│   └── React UI
-│
+├── frontend/                # React UI
 ├── data/
-│   ├── raw/
-│   └── vector_store/
+│   ├── raw/                 # Uploaded PDFs
+│   └── vector_store/        # FAISS index
 │
 ├── requirements.txt
 └── README.md
 
 ⚙️ Setup Instructions
-1️⃣ Clone the Repository
+
+1️⃣ Clone Repository
+
 git clone https://github.com/your-username/rag-document-intelligence.git
 cd rag-document-intelligence
 
 2️⃣ Backend Setup
 
-Create and activate virtual environment:
+Create virtual environment:
 
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
 
+Activate it:
+
+# Linux / Mac
+source venv/bin/activate
+
+# Windows
+venv\Scripts\activate
 
 Install dependencies:
 
 pip install -r requirements.txt
 
-
-Run backend server:
+Run server:
 
 uvicorn app.main:app --reload
 
+📍 Backend runs at:
+👉 http://localhost:8000
 
-Backend will run at:
-
-http://localhost:8000
-
-
-Swagger UI:
-
-http://localhost:8000/docs
+📄 API Docs (Swagger):
+👉 http://localhost:8000/docs
 
 3️⃣ Frontend Setup
 cd frontend
 npm install
 npm run dev
 
-
-Frontend will run at:
-
-http://localhost:5173
+📍 Frontend runs at:
+👉 http://localhost:5173
 
 🧪 API Endpoints
 🔹 Health Check
 GET /health
-
-🔹 Ingest PDF
+🔹 Upload & Ingest PDF
 POST /ingest
 Content-Type: multipart/form-data
-
-🔹 Query Document
+🔹 Query Documents
 POST /query
 {
   "query": "Your question here"
 }
 
 🛡️ Hallucination Prevention
-
-Answers are generated only from retrieved document context
-
-If no relevant chunks are found → system refuses to answer
-
-Ensures grounded, trustworthy responses
+✅ Answers are generated only from retrieved document context
+❌ If no relevant data is found → system refuses to answer
+🔍 Ensures trustworthy, explainable AI responses
 
 🚧 Current Limitations
-
-Single-user local setup
-
+Single-user (local environment)
 Local FAISS storage
 
-Basic answer generation (LLM integration optional)
-
+Basic answer generation (no LLM yet)
 🔮 Future Enhancements
-
-✅ Multi-document & multi-user support
-
-🔄 Reranking with cross-encoders
-
+✅ Multi-user & multi-document support
+🔄 Reranking using cross-encoders
 🤖 LLM integration (OpenAI / Gemini / Ollama)
-
 🔐 Authentication & access control
-
-📊 Query analytics
-
-☁️ Cloud vector databases (Pinecone / Qdrant)
-
+📊 Query analytics dashboard
+☁️ Cloud vector DB (Pinecone / Qdrant)
 🐳 Dockerized deployment
+🎯 Why This Project Stands Out
 
-🎯 Why This Project Matters
+This is not just a demo — it addresses real GenAI engineering challenges:
 
-This project focuses on real GenAI engineering challenges, not just model usage:
-
-Retrieval correctness
-
-Data isolation
-
-Production failure handling
-
-Grounded AI responses
-
-System design thinking
-
+🔍 Retrieval accuracy
+🧱 System design & scalability
+🛡️ Hallucination prevention
+📦 Production-ready architecture
+⚙️ Backend + AI integration
 👨‍💻 Author
 
 Vansh Bisen
 Engineering Student | GenAI & Backend Enthusiast
 
-🔗 LinkedIn: ([add link](https://www.linkedin.com/in/vansh-bisen-80914b287/))
-🔗 GitHub: (https://github.com/iambisenvansh)
+🔗 LinkedIn: https://www.linkedin.com/in/vansh-bisen-80914b287/
 
-⭐ If You Like This Project
-
-Give it a ⭐ on GitHub and feel free to fork or contribute!
-
+🔗 GitHub: https://github.com/iambisenvansh
