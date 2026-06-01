@@ -8,16 +8,37 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# ✅ CORS middleware (required for frontend)
+# Root endpoint
+@app.get("/")
+async def root():
+    return {
+        "message": "RAG Document Intelligence API Running"
+    }
+
+# CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],        # allow React frontend
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# ✅ API routes
-app.include_router(health.router, prefix="/health", tags=["Health"])
-app.include_router(ingest.router, prefix="/ingest", tags=["Ingestion"])
-app.include_router(query.router, prefix="/query", tags=["Query"])
+# Routes
+app.include_router(
+    health.router,
+    prefix="/health",
+    tags=["Health"]
+)
+
+app.include_router(
+    ingest.router,
+    prefix="/ingest",
+    tags=["Ingestion"]
+)
+
+app.include_router(
+    query.router,
+    prefix="/query",
+    tags=["Query"]
+)
