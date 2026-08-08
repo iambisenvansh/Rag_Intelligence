@@ -1,10 +1,7 @@
-# Virtual environment
 venv/
-.env/
-
-# Python cache
+.env
 __pycache__/
 *.pyc
-
-# Vector store / data
-data/
+node_modules/
+data/vector_store/
+data/raw/
