@@ -1,7 +1,10 @@
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer(
+    "all-MiniLM-L6-v2",
+    device="cpu"
+)
 
 def embed_chunks(text_chunks: list[str]) -> np.ndarray:
     if not text_chunks:
@@ -9,11 +12,11 @@ def embed_chunks(text_chunks: list[str]) -> np.ndarray:
 
     embeddings = model.encode(
         text_chunks,
+        batch_size=8,
         show_progress_bar=False,
         convert_to_numpy=True
     )
 
-    # Ensure correct shape for FAISS
     if embeddings.ndim == 1:
         embeddings = embeddings.reshape(1, -1)
 
