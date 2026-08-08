@@ -2,17 +2,19 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install Tesseract OCR
+# Install system dependencies for OCR and PDF processing
 RUN apt-get update && \
-    apt-get install -y tesseract-ocr && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y \
+    tesseract-ocr \
+    poppler-utils \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project
+# Copy application
 COPY . .
 
 # Start FastAPI
